@@ -7,7 +7,7 @@ using AlquilerVehiculos.Excepciones;
 using System.Data.Entity;
 
 namespace AlquilerVehiculos.Repository {
-    public class ClientesRespository : IClientesRepository {
+    public class ClientesRepository : IClientesRepository {
 
         public Clientes Create(Clientes clientes) {
             return ApplicationDbContext.applicationDbContext.Clientes.Add(clientes);

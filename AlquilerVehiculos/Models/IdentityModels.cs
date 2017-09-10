@@ -4,6 +4,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using System;
+using System.Data.Entity;
+using AlquilerVehiculos.Migrations;
 
 namespace AlquilerVehiculos.Models
 {
@@ -27,6 +29,7 @@ namespace AlquilerVehiculos.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
         }
         
         public static ApplicationDbContext Create()
@@ -39,5 +42,10 @@ namespace AlquilerVehiculos.Models
         public System.Data.Entity.DbSet<AlquilerVehiculos.Models.Vehiculos> Vehiculos { get; set; }
 
         public System.Data.Entity.DbSet<AlquilerVehiculos.Models.Reservas> Reservas { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder) {
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
