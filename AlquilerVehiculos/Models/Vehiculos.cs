@@ -16,6 +16,6 @@ namespace AlquilerVehiculos.Models {
         public bool AireAcondicionado { get; set; }
         public float TarifaDiaria { get; set; }
 
-        public virtual ICollection<Reservas> Reservas { get; set; }
+        //public virtual ICollection<Reservas> Reservas { get; set; }
     }
 }
