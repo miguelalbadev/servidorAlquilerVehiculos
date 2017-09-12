@@ -16,7 +16,7 @@ namespace AlquilerVehiculos.Models {
         public DateTime FechaCarnet { get; set; }
         public int PuntosCarnet { get; set; }
 
-        public virtual ICollection<Reservas> Reservas { get; set; }
+        //public virtual ICollection<Reservas> Reservas { get; set; }
 
     }
 }
