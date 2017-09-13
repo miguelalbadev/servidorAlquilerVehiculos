@@ -23,11 +23,16 @@ namespace AlquilerVehiculos.Repository {
         }
 
         public Reservas Read(long id) {
-            return ApplicationDbContext.applicationDbContext.Reservas.Find(id);   
+            return ApplicationDbContext.applicationDbContext.Reservas.
+                Include(r => r.Cliente).
+                Include(r => r.Vehiculo).Where(r => r.Id == id).FirstOrDefault<Reservas>();
+            
         }
 
         public IQueryable<Reservas> ReadAll() {
-            IList<Reservas> reservas = new List<Reservas>(ApplicationDbContext.applicationDbContext.Reservas);
+            IList<Reservas> reservas = new List<Reservas>(ApplicationDbContext.applicationDbContext.Reservas.
+                Include(r => r.Cliente).
+                Include(r => r.Vehiculo).ToList<Reservas>());
             return reservas.AsQueryable();
         }
 
